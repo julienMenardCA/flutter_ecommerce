@@ -26,4 +26,4 @@ const data = [
       "reference": "A 235",
       "stock": 70
     }
-]
+];
