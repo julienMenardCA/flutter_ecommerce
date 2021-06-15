@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/bootstrap.dart';
+
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Amalibaba"),
+          title: const Text("Amazibaba"),
           actions: [
             IconButton(
               icon: const Icon(Icons.shopping_cart),
@@ -18,7 +21,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ]
         ),
-      body: const Center(child: null,)
+      body: Container(),
+      
+      bottomNavigationBar: Bootstrap(
+        currentIndex:0 ,
+      ),
+
     );
   }
 }
