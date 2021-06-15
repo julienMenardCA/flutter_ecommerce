@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/bootstrap.dart';
+import 'package:flutter_ecommerce/widgets/customBottomNavigationBar.dart';
 
 
 
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         ),
       body: Container(),
 
-      bottomNavigationBar: Bootstrap(
+      bottomNavigationBar: customBottomNavigationBar(
         currentIndex:0 ,
       ),
 

@@ -1,19 +1,19 @@
 import 'package:flutter_ecommerce/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
-class Bootstrap extends StatefulWidget {
+class customBottomNavigationBar extends StatefulWidget {
   final int currentIndex;
 
-  Bootstrap({
+  customBottomNavigationBar({
     Key? key,
     required this.currentIndex,
   }) :super(key: key);
 
   @override
-  _BootstrapState createState() => _BootstrapState();
+  _customBottomNavigationBarState createState() => _customBottomNavigationBarState();
 }
 
-class _BootstrapState extends State<Bootstrap>{
+class _customBottomNavigationBarState extends State<customBottomNavigationBar>{
   late PageController _controller;
 
   @override
