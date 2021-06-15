@@ -33,15 +33,13 @@ class _ListProducts extends State<ListProducts> {
                     Center(
                       child: Text(data[index]["title"] as String),
                     ),
-                    Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                data[index]["image_url"] as String),
-                            fit: BoxFit.fitWidth,
-                            alignment: Alignment.topCenter,
-                          ),
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              data[index]["image_url"] as String),
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.topCenter,
                         ),
                       ),
                     ),
