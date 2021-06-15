@@ -1,23 +1,24 @@
 
 import 'package:flutter/material.dart';
 
-class Home_screen extends StatelessWidget {
-  const Home_screen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Amalibaba"),
+          title: const Text("Amalibaba"),
           actions: [
             IconButton(
-              icon: Icon(Icons.shopping_cart),
+              icon: const Icon(Icons.shopping_cart),
+              // ignore: avoid_returning_null_for_void
               onPressed:() => null,
             ),
           ]
         ),
-      body: Center(child: null,)
+      body: const Center(child: null,)
     );
   }
 }
