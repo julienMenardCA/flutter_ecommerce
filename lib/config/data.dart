@@ -38,7 +38,7 @@ const data = [
   {
     "object_id": 5,
     "title" : "Pisang",
-    "image_url" : "https://www.punch-et-cocktail.com/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/3/4/3400-liqueur-pisang-ambon.jpg"
+    "image_url" : "https://www.punch-et-cocktail.com/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/3/4/3400-liqueur-pisang-ambon.jpg",
     "price" : 7.90,
     "description": "Le Pisang Ambon est une liqueur de banane verte et fruits tropicaux, de couleur vert vif.",
     "reference": "A 238",
