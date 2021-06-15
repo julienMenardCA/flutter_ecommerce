@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Amalibaba"),
+          title: const Text("Home"),
           actions: [
             IconButton(
               icon: const Icon(Icons.shopping_cart),
