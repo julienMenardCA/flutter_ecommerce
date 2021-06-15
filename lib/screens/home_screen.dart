@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Amazibaba"),
+          title: const Text("Home"),
           actions: [
             IconButton(
               icon: const Icon(Icons.shopping_cart),
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           ]
         ),
       body: Container(),
-      
+
       bottomNavigationBar: Bootstrap(
         currentIndex:0 ,
       ),

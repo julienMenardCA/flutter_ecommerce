@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/screens/home_screen.dart';
+import 'package:flutter_ecommerce/screens/product_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Le meilleur e-magasin d\'alcool',
+      title: 'E-lcool : Le meilleur e-magasin d\'alcool',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const ProductScreen(),
     );
   }
 }
