@@ -68,7 +68,7 @@ class _HomeScreen extends State<HomeScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
-                            child: Text(_productImplRepository.getProductById(index).price.toString()),
+                            child: Text(_productImplRepository.getProductById(index).price.toString() + '€'),
                           ),
                           IconButton(
                             onPressed: () => null,
