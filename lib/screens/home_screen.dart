@@ -18,7 +18,7 @@ class _HomeScreen extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text("Home"),
+          title: const Text("E-lcool"),
           actions: [
             IconButton(
               icon: const Icon(Icons.shopping_cart),
