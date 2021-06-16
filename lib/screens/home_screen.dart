@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
+import 'package:flutter_ecommerce/screens/product_screen.dart';
 import 'package:flutter_ecommerce/widgets/custom_bottom_navigation_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -17,16 +17,13 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text("E-lcool"),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              // ignore: avoid_returning_null_for_void
-              onPressed:() => null,
-            ),
-          ]
-      ),
+      appBar: AppBar(title: const Text("E-lcool"), actions: [
+        IconButton(
+          icon: const Icon(Icons.shopping_cart),
+          // ignore: avoid_returning_null_for_void
+          onPressed: () => null,
+        ),
+      ]),
       body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
@@ -49,15 +46,22 @@ class _HomeScreen extends State<HomeScreen> {
                           children: [
                             Positioned.fill(
                                 bottom: 0.0,
-                                child: Image.network(
-                                    _productImplRepository.getProductById(index).imageUrl)
-                            ),
+                                child: Image.network(_productImplRepository
+                                    .getProductById(index)
+                                    .imageUrl)),
                             Positioned.fill(
                                 child: Material(
                                     color: Colors.transparent,
                                     child: InkWell(
                                       splashColor: HexColor("#c8dbef"),
-                                      onTap: () => {print("click")},
+                                      onTap: () => {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProductScreen(index: index)),
+                                        ),
+                                      },
                                     ))),
                           ],
                         ),
@@ -68,7 +72,11 @@ class _HomeScreen extends State<HomeScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
-                            child: Text(_productImplRepository.getProductById(index).price.toString() + '€'),
+                            child: Text(_productImplRepository
+                                    .getProductById(index)
+                                    .price
+                                    .toString() +
+                                '€'),
                           ),
                           IconButton(
                             onPressed: () => null,
@@ -81,7 +89,7 @@ class _HomeScreen extends State<HomeScreen> {
             );
           }),
       bottomNavigationBar: const CustomBottomNavigationBar(
-        currentIndex:0 ,
+        currentIndex: 0,
       ),
     );
   }
