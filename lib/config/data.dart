@@ -13,7 +13,7 @@ const data = [
     "title" : "Rhum",
     "image_url" : "https://www.vinatis.com/35568-detail_default/bumbu-distillerie-bumbu.png",
     "price" : 25.50,
-    "description": "Le rhum ambré torrid au parfum délicat est idéal pour l'élaboration de punchs, plats cuisinés et pâtisseries.",
+    "description": "Le rhum ambré torride au parfum délicat est idéal pour l'élaboration de punchs, plats cuisinés et pâtisseries.",
     "reference": "A 235",
     "stock": 70
   },
