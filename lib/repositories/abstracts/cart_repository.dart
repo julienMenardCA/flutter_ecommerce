@@ -1,5 +1,5 @@
 abstract class CartRepository {
   getShoppingCart();
 
-  addInCart();
+  addInCart(String reference);
 }
