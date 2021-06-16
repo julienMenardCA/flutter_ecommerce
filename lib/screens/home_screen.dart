@@ -1,17 +1,23 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
 import 'package:flutter_ecommerce/widgets/custom_bottom_navigation_bar.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  _HomeScreen createState() => _HomeScreen();
+}
 
+class _HomeScreen extends State<HomeScreen> {
+  final ProductImplRepository _productImplRepository = ProductImplRepository();
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
           title: const Text("Home"),
           actions: [
             IconButton(
@@ -20,13 +26,63 @@ class HomeScreen extends StatelessWidget {
               onPressed:() => null,
             ),
           ]
-        ),
-      body: Container(),
-
+      ),
+      body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 2 / 3,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 0),
+          itemCount: _productImplRepository.getAllProducts().length,
+          itemBuilder: (BuildContext ctx, index) {
+            return Container(
+              margin: const EdgeInsets.all(20.0),
+              child: Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Positioned.fill(
+                                bottom: 0.0,
+                                child: Image.network(
+                                    _productImplRepository.getProductById(index).imageUrl)
+                            ),
+                            Positioned.fill(
+                                child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      splashColor: HexColor("#c8dbef"),
+                                      onTap: () => {print("click")},
+                                    ))),
+                          ],
+                        ),
+                      ),
+                      Text(_productImplRepository.getProductById(index).title),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Text(_productImplRepository.getProductById(index).price.toString()),
+                          ),
+                          IconButton(
+                            onPressed: () => null,
+                            icon: const Icon(Icons.shopping_cart),
+                          )
+                        ],
+                      )
+                    ],
+                  )),
+            );
+          }),
       bottomNavigationBar: const CustomBottomNavigationBar(
         currentIndex:0 ,
       ),
-
     );
   }
 }
