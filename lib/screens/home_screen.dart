@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
 import 'package:flutter_ecommerce/screens/product_screen.dart';
+import 'package:flutter_ecommerce/screens/shopping_cart_copy.dart';
 import 'package:flutter_ecommerce/widgets/custom_bottom_navigation_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -21,7 +22,17 @@ class _HomeScreen extends State<HomeScreen> {
         IconButton(
           icon: const Icon(Icons.shopping_cart),
           // ignore: avoid_returning_null_for_void
-          onPressed: () => null,
+          onPressed: () {
+                setState(() {
+                  Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ListShoppingCart(),
+                          ),
+                  );
+                });
+          },
         ),
       ]),
       body: GridView.builder(
@@ -78,9 +89,20 @@ class _HomeScreen extends State<HomeScreen> {
                                     .toString() +
                                 '€'),
                           ),
-                          IconButton(
-                            onPressed: () => null,
+                           IconButton(
                             icon: const Icon(Icons.shopping_cart),
+                            // ignore: avoid_returning_null_for_void
+                            onPressed: () {
+                                  setState(() {
+                                    Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ListShoppingCart(),
+                                            ),
+                                    );
+                                  });
+                            },
                           )
                         ],
                       )
@@ -88,9 +110,7 @@ class _HomeScreen extends State<HomeScreen> {
                   )),
             );
           }),
-      bottomNavigationBar: const CustomBottomNavigationBar(
-        currentIndex: 0,
-      ),
+
     );
   }
 }

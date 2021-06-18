@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce/screens/home_screen.dart';
+import 'package:flutter_ecommerce/widgets/custom_bottom_navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen()
+      home: CustomBottomNavigationBar(currentIndex: 0)
     );
   }
 }
