@@ -48,7 +48,7 @@ class _ProductScreen extends State<ProductScreen> {
               Container(
                 margin: const EdgeInsets.only(top: 15.0),
                 child: Text(
-                  _productImplRepository.getProductById(widget.index).title,
+                  _productImplRepository.getProductByIndex(widget.index).title,
                   style: const TextStyle(fontSize: 24.0),
                 ),
               ),
@@ -57,7 +57,7 @@ class _ProductScreen extends State<ProductScreen> {
                   margin: const EdgeInsets.only(top: 20.0),
                   child: Text(
                     _productImplRepository
-                            .getProductById(widget.index)
+                            .getProductByIndex(widget.index)
                             .price
                             .toString() +
                         '€',
@@ -118,7 +118,7 @@ class _ProductScreen extends State<ProductScreen> {
                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Text(
                   _productImplRepository
-                      .getProductById(widget.index)
+                      .getProductByIndex(widget.index)
                       .description
                       .toString(),
                   style: const TextStyle(fontSize: 14.0),
@@ -134,7 +134,7 @@ class _ProductScreen extends State<ProductScreen> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(_productImplRepository
-                          .getProductById(widget.index)
+                          .getProductByIndex(widget.index)
                           .imageUrl))),
             ),
           ),
