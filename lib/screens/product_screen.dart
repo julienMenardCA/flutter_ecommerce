@@ -45,10 +45,10 @@ class _ProductScreen extends State<ProductScreen> {
                     color: Colors.black,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 10.0),
+                    margin: const EdgeInsets.only(top: 15.0),
                     child: Text(
                       _productImplRepository.getProductById(widget.index).title,
-                      style: const TextStyle(fontSize: 28.0),
+                      style: const TextStyle(fontSize: 24.0),
                     ),
                   ),
                   Row(children: [
@@ -59,17 +59,22 @@ class _ProductScreen extends State<ProductScreen> {
                                 .getProductById(widget.index)
                                 .price
                                 .toString() + '€',
-                        style: const TextStyle(fontSize: 20.0),
+                        style: const TextStyle(fontSize: 26.0),
                       ),
                     ),
                     Container(
+                      width: 85.0,
+                      margin: const EdgeInsets.only(left: 120.0, top: 20.0),
                       child: const Text(
                         "Mis en favori par 1,2k visiteurs",
+                        style: const TextStyle(fontSize: 11.0),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () => null,
-                      icon: const Icon(Icons.favorite, color: Colors.red,),
+                    Container(
+                      child: IconButton(
+                        onPressed: () => null,
+                        icon: const Icon(Icons.favorite, color: Colors.red, size: 40.0),
+                      ),
                     )
                   ])
                 ],

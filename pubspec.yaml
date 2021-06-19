@@ -38,6 +38,7 @@ dependencies:
   equatable: ^2.0.2
   hexcolor: ^2.0.4
   sliding_up_panel: ^2.0.0+1
+  decorated_icon: ^1.2.0
 
 dev_dependencies:
   flutter_test:
