@@ -20,7 +20,8 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("E-lcool"), actions: [
+      appBar: AppBar(title: const Text("E-lcool"),
+          actions: [
         IconButton(
           icon: const Icon(Icons.shopping_cart),
           // ignore: avoid_returning_null_for_void

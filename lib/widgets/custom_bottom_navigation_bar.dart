@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/screens/favorite_screen.dart';
 import 'package:flutter_ecommerce/screens/home_screen.dart';
 import 'package:flutter_ecommerce/screens/product_screen.dart';
 import 'package:flutter_ecommerce/screens/shopping_cart.dart';
@@ -36,7 +37,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             controller: _controller,
             children: const [
               HomeScreen(),
-              ProductScreen(
+              FavoriteScreen(
                 index: 1,
               ),
               ListShoppingCart2(),
