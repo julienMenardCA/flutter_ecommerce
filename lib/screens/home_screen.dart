@@ -52,6 +52,13 @@ class _HomeScreen extends State<HomeScreen> {
                   ),
                   child: Column(
                     children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 90.0),
+                        child: IconButton(
+                          onPressed: () => null,
+                          icon: const Icon(Icons.favorite, color: Colors.red, size: 30.0),
+                        ),
+                      ),
                       Expanded(
                         child: Stack(
                           children: [
