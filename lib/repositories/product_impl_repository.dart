@@ -14,5 +14,4 @@ class ProductImplRepository extends ProductRepository {
     return ProductModel(objectId: data[index]["object_id"]! as int, title: data[index]["title"]! as String, imageUrl: data[index]["image_url"]! as String,
         price: data[index]["price"]! as double, description: data[index]["description"]! as String, reference: data[index]["reference"]! as String, stock: data[index]["stock"]! as int);
   }
-
 }

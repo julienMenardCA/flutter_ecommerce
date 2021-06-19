@@ -61,7 +61,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             onTap: (index) {
               setState(() => _currentIndex = index);
               _controller.animateToPage(_currentIndex,
-                  duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeIn);
             }));
   }
 }

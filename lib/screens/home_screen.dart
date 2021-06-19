@@ -20,21 +20,19 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("E-lcool"),
-          actions: [
+      appBar: AppBar(title: const Text("E-lcool"), actions: [
         IconButton(
           icon: const Icon(Icons.shopping_cart),
           // ignore: avoid_returning_null_for_void
           onPressed: () {
-                setState(() {
-                  Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ListShoppingCart(),
-                          ),
-                  );
-                });
+            setState(() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ListShoppingCart(),
+                ),
+              );
+            });
           },
         ),
       ]),
@@ -59,7 +57,8 @@ class _HomeScreen extends State<HomeScreen> {
                         margin: const EdgeInsets.only(left: 90.0),
                         child: IconButton(
                           onPressed: () => null,
-                          icon: const Icon(Icons.favorite, color: Colors.red, size: 30.0),
+                          icon: const Icon(Icons.favorite,
+                              color: Colors.red, size: 30.0),
                         ),
                       ),
                       Expanded(
@@ -69,8 +68,7 @@ class _HomeScreen extends State<HomeScreen> {
                                 bottom: 0.0,
                                 child: Image.network(_productImplRepository
                                     .getProductByIndex(index)
-                                    .imageUrl)
-                            ),
+                                    .imageUrl)),
                             Positioned.fill(
                                 child: Material(
                                     color: Colors.transparent,
@@ -81,17 +79,16 @@ class _HomeScreen extends State<HomeScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  ProductScreen(index: index)
-                                          ),
+                                                  ProductScreen(index: index)),
                                         ),
                                       },
-                                    )
-                                )
-                            ),
+                                    ))),
                           ],
                         ),
                       ),
-                      Text(_productImplRepository.getProductByIndex(index).title),
+                      Text(_productImplRepository
+                          .getProductByIndex(index)
+                          .title),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -103,20 +100,21 @@ class _HomeScreen extends State<HomeScreen> {
                                     .toString() +
                                 '€'),
                           ),
-                           IconButton(
+                          IconButton(
                             icon: const Icon(Icons.shopping_cart),
                             onPressed: () {
-                              _cartImplRepository.addToCart(_productImplRepository.getProductByIndex(index).reference);
+                              _cartImplRepository.addToCart(
+                                  _productImplRepository
+                                      .getProductByIndex(index)
+                                      .reference);
                             },
                           )
                         ],
                       )
                     ],
-                  )
-              ),
+                  )),
             );
           }),
-
     );
   }
 }
