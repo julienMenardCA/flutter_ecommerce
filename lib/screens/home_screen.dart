@@ -1,3 +1,4 @@
+import 'package:decorated_icon/decorated_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/repositories/cart_impl_repository.dart';
 import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
@@ -55,11 +56,17 @@ class _HomeScreen extends State<HomeScreen> {
                     children: [
                       Container(
                         margin: const EdgeInsets.only(left: 90.0),
-                        child: IconButton(
-                          onPressed: () => null,
-                          icon: const Icon(Icons.favorite,
-                              color: Colors.red, size: 30.0),
-                        ),
+                        child: const DecoratedIcon(
+                          Icons.favorite,
+                          color: Colors.red,
+                          size: 30.0,
+                          shadows: [
+                            BoxShadow(
+                                blurRadius: 3.0,
+                                color: Colors.black26,
+                                offset: Offset(0, 3.0))
+                          ],
+                        )
                       ),
                       Expanded(
                         child: Stack(
