@@ -31,39 +31,36 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: PageView(
-          scrollDirection: Axis.horizontal,
-          controller: _controller,
-          children: [
-            HomeScreen(),
-            ProductScreen(index: 1,),
-            ListShoppingCart2(),
-            ProductScreen(index: 2,),
-          ]
-        ),
-      bottomNavigationBar: BottomNavigationBar(
-       
-      selectedItemColor: Colors.lightBlue,
-      unselectedItemColor: Colors.grey,
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Accueil"),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoris"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart), label: "Panier"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.perm_identity), label: "Profil"),
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-          setState(() => _currentIndex = index);
-          _controller.animateToPage(
-            _currentIndex, 
-            duration: Duration(milliseconds: 200), 
-            curve: Curves.easeIn
-          );
-      } 
-    )
-    );
-    
+        body: PageView(
+            scrollDirection: Axis.horizontal,
+            controller: _controller,
+            children: const [
+              HomeScreen(),
+              ProductScreen(
+                index: 1,
+              ),
+              ListShoppingCart2(),
+              ProductScreen(
+                index: 2,
+              ),
+            ]),
+        bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.lightBlue,
+            unselectedItemColor: Colors.grey,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Accueil"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite), label: "Favoris"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart), label: "Panier"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.perm_identity), label: "Profil"),
+            ],
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              setState(() => _currentIndex = index);
+              _controller.animateToPage(_currentIndex,
+                  duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+            }));
   }
 }
