@@ -1,5 +1,6 @@
 class CartModel {
   final String reference;
+  final int quantity;
 
-  const CartModel({required this.reference});
+  CartModel({required this.reference, this.quantity = 1});
 }

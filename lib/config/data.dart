@@ -52,5 +52,5 @@ const data = [
     "description": "La bière pelforth blonde, brassée dans le nord depuis 1921, affirme un caractère unique, à l’amertume justement voulue.",
     "reference": "B 101",
     "stock": 0
-  }
+  },
 ];

@@ -1,5 +1,4 @@
 abstract class ProductRepository {
     getAllProducts();
-
-    getProductById(int id);
+    getProductByIndex(int index);
 }

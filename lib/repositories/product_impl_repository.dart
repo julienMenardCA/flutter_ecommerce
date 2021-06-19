@@ -10,9 +10,9 @@ class ProductImplRepository extends ProductRepository {
   }
 
   @override
-  ProductModel getProductById(int id) {
-    return ProductModel(objectId: data[id]["object_id"]! as int, title: data[id]["title"]! as String, imageUrl: data[id]["image_url"]! as String,
-        price: data[id]["price"]! as double, description: data[id]["description"]! as String, reference: data[id]["reference"]! as String, stock: data[id]["stock"]! as int);
+  ProductModel getProductByIndex(int index) {
+    return ProductModel(objectId: data[index]["object_id"]! as int, title: data[index]["title"]! as String, imageUrl: data[index]["image_url"]! as String,
+        price: data[index]["price"]! as double, description: data[index]["description"]! as String, reference: data[index]["reference"]! as String, stock: data[index]["stock"]! as int);
   }
 
 }

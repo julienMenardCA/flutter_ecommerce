@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/repositories/cart_impl_repository.dart';
 import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
 import 'package:flutter_ecommerce/screens/product_screen.dart';
 import 'package:flutter_ecommerce/screens/shopping_cart_copy.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreen extends State<HomeScreen> {
   final ProductImplRepository _productImplRepository = ProductImplRepository();
+  final CartImplRepository _cartImplRepository = CartImplRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class _HomeScreen extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    ListShoppingCart(),
+                                    const ListShoppingCart(),
                           ),
                   );
                 });
@@ -65,8 +67,9 @@ class _HomeScreen extends State<HomeScreen> {
                             Positioned.fill(
                                 bottom: 0.0,
                                 child: Image.network(_productImplRepository
-                                    .getProductById(index)
-                                    .imageUrl)),
+                                    .getProductByIndex(index)
+                                    .imageUrl)
+                            ),
                             Positioned.fill(
                                 child: Material(
                                     color: Colors.transparent,
@@ -77,44 +80,39 @@ class _HomeScreen extends State<HomeScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  ProductScreen(index: index)),
+                                                  ProductScreen(index: index)
+                                          ),
                                         ),
                                       },
-                                    ))),
+                                    )
+                                )
+                            ),
                           ],
                         ),
                       ),
-                      Text(_productImplRepository.getProductById(index).title),
+                      Text(_productImplRepository.getProductByIndex(index).title),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Text(_productImplRepository
-                                    .getProductById(index)
+                                    .getProductByIndex(index)
                                     .price
                                     .toString() +
                                 '€'),
                           ),
                            IconButton(
                             icon: const Icon(Icons.shopping_cart),
-                            // ignore: avoid_returning_null_for_void
                             onPressed: () {
-                                  setState(() {
-                                    Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ListShoppingCart(),
-                                            ),
-                                    );
-                                  });
+                              _cartImplRepository.addToCart(_productImplRepository.getProductByIndex(index).reference);
                             },
                           )
                         ],
                       )
                     ],
-                  )),
+                  )
+              ),
             );
           }),
 

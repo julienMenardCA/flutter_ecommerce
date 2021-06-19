@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/tests/file_read_write_test.dart';
 import 'package:flutter_ecommerce/widgets/custom_bottom_navigation_bar.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CustomBottomNavigationBar(currentIndex: 0)
+      // home: FlutterDemo(storage: CounterStorage())
+      home: const CustomBottomNavigationBar(currentIndex: 0)
     );
   }
 }

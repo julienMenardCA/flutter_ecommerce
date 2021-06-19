@@ -36,8 +36,7 @@ class _ProductScreen extends State<ProductScreen> {
         minHeight: 200.0,
         padding: const EdgeInsets.all(15.0),
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(50.0), topRight: Radius.circular(50.0)
-        ),
+            topLeft: Radius.circular(50.0), topRight: Radius.circular(50.0)),
         panel: Center(
           child: Column(
             children: [
@@ -106,17 +105,15 @@ class _ProductScreen extends State<ProductScreen> {
                         "BUY NOW",
                         style: TextStyle(fontSize: 22.0, color: Colors.white),
                       ),
-                    )
-                )
+                    ))
               ]),
               Container(
-                width: 100.0,
-                margin: const EdgeInsets.all(30.0),
-                child: const Text(
-                  "Description :",
-                  style: TextStyle(fontSize: 16),
-                )
-              ),
+                  width: 100.0,
+                  margin: const EdgeInsets.all(30.0),
+                  child: const Text(
+                    "Description :",
+                    style: TextStyle(fontSize: 16),
+                  )),
               Container(
                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Text(
