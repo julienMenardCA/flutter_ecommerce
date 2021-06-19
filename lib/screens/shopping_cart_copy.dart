@@ -29,6 +29,8 @@ class _ListShoppingCart extends State < ListShoppingCart > {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
+                child: Padding(
+                        padding: const EdgeInsets.all(12.0),
                 child: Row(
                   children: [
                     Expanded(
@@ -69,29 +71,52 @@ class _ListShoppingCart extends State < ListShoppingCart > {
                           Expanded(
                             flex: 25,
                             child: Center(
+                              child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(children: [
-                                    IconButton(
-                                      onPressed: () => null,
-                                      icon: const Icon(Icons.remove),
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(width: 2, color: Colors.black54),
+                                          borderRadius: BorderRadius.circular(5.0)
+                                        ),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(bottom: 30.0),
+                                        child: IconButton(
+                                          onPressed: () => null,
+                                          icon: const Icon(Icons.remove),
+                                        )
+                                      ),
+                                      
                                     ),
                                     Text('1'),
-                                    IconButton(
-                                      onPressed: () => null,
-                                      icon: const Icon(Icons.add),
-                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(width: 2, color: Colors.black54),
+                                        borderRadius: BorderRadius.circular(5.0)
+                                      ),
+                                      child: IconButton(
+                                        onPressed: () => null,
+                                        icon: const Icon(Icons.add),
+                                      )
+                                    )
                                   ], 
                                   ),
                                   Text(data[index]["price"]?.toString() ?? ''),
                                 ]
-                              ))
+                              )
+                              )
+                              )
                           ),
                         ],
                       )
                     )
                   ],
+                )
                 )
               ),
           ),
