@@ -19,9 +19,11 @@ class FavoriteScreen extends StatefulWidget {
 
 class _FavoriteScreen extends State<FavoriteScreen> {
   String _favoritesRetrieved = "";
-  final FavoriteImplRepository _favoriteImplRepository = FavoriteImplRepository();
+  final FavoriteImplRepository _favoriteImplRepository =
+      FavoriteImplRepository();
   final ProductImplRepository _productImplRepository = ProductImplRepository();
-  final ShoppingCartStorage _favoritesStorage = ShoppingCartStorage(fileName: "favorites.json");
+  final ShoppingCartStorage _favoritesStorage =
+      ShoppingCartStorage(fileName: "favorites.json");
 
   @override
   void initState() {
@@ -41,28 +43,37 @@ class _FavoriteScreen extends State<FavoriteScreen> {
         references.add(jsonDecode(_favoritesRetrieved)[i]["reference"]);
       }
     }
-    List<ProductModel> _favorites = _productImplRepository
-        .getProductsWithReferences(references);
+    List<ProductModel> _favorites =
+        _productImplRepository.getProductsWithReferences(references);
     _favoriteImplRepository.getFavorites();
     return Scaffold(
-      appBar: AppBar(
-        actions: [IconButton(
-          onPressed: () {
-            if (_favorites.isNotEmpty) {
-              _favoriteImplRepository.emptyFavorites();
-              final snackBar = SnackBar(content: Text('Favoris vidé'));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                      const MainFrame(currentIndex: 1)));
-            }
-          },
-          icon: const Icon(Icons.delete_forever),
-        )],
-      ),
-      body: _favorites.isEmpty ? EmptyFavorites() : NotEmptyFavorites(favorites: _favorites, favoritesRetrieved: _favoritesRetrieved, productImplRepository: _productImplRepository, favoriteImplRepository: _favoriteImplRepository,));
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                if (_favorites.isNotEmpty) {
+                  _favoriteImplRepository.emptyFavorites();
+                  final snackBar = SnackBar(content: Text('Favoris vidé'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const MainFrame(currentIndex: 1)));
+                }
+              },
+              icon: const Icon(Icons.delete_forever),
+            )
+          ],
+        ),
+        body: _favorites.isEmpty
+            ? EmptyFavorites()
+            : NotEmptyFavorites(
+                favorites: _favorites,
+                favoritesRetrieved: _favoritesRetrieved,
+                productImplRepository: _productImplRepository,
+                favoriteImplRepository: _favoriteImplRepository,
+              ));
   }
 }
 
@@ -72,7 +83,13 @@ class NotEmptyFavorites extends StatelessWidget {
   final FavoriteImplRepository favoriteImplRepository;
   final ProductImplRepository productImplRepository;
 
-  const NotEmptyFavorites({Key? key, required this.favorites, required this.favoritesRetrieved, required this.productImplRepository, required this.favoriteImplRepository}) : super(key: key);
+  const NotEmptyFavorites(
+      {Key? key,
+      required this.favorites,
+      required this.favoritesRetrieved,
+      required this.productImplRepository,
+      required this.favoriteImplRepository})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -96,9 +113,7 @@ class NotEmptyFavorites extends StatelessWidget {
                     Container(
                         margin: const EdgeInsets.only(left: 90.0),
                         child: GestureDetector(
-                          onTap: () {
-
-                          },
+                          onTap: () {},
                           child: const DecoratedIcon(
                             Icons.favorite,
                             color: Colors.red,
@@ -116,8 +131,7 @@ class NotEmptyFavorites extends StatelessWidget {
                         children: [
                           Positioned.fill(
                               bottom: 0.0,
-                              child: Image.network(favorites[index]
-                                  .imageUrl)),
+                              child: Image.network(favorites[index].imageUrl)),
                           Positioned.fill(
                               child: Material(
                                   color: Colors.transparent,
@@ -135,34 +149,42 @@ class NotEmptyFavorites extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Text(favorites[index]
-                        .title),
+                    Text(favorites[index].title),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: Text(favorites[index].price
-                              .toStringAsFixed(2) +
-                              '€'),
+                          child: Text(
+                              favorites[index].price.toStringAsFixed(2) + '€'),
                         ),
                         IconButton(
-                          icon: favoritesRetrieved.contains(productImplRepository.getProductByIndex(index).reference) ? const Icon(Icons.shopping_cart) : const Icon(Icons.shopping_cart_outlined),
+                          icon: favoritesRetrieved.contains(
+                                  productImplRepository
+                                      .getProductByIndex(index)
+                                      .reference)
+                              ? const Icon(Icons.shopping_cart)
+                              : const Icon(Icons.shopping_cart_outlined),
                           onPressed: () {
                             var snackBar = SnackBar(content: Text(''));
-                            if (!favoritesRetrieved.contains(productImplRepository.getProductByIndex(index).reference))
-                            {
+                            if (!favoritesRetrieved.contains(
+                                productImplRepository
+                                    .getProductByIndex(index)
+                                    .reference)) {
                               favoriteImplRepository.addToFavorites(
                                   productImplRepository
                                       .getProductByIndex(index)
                                       .reference);
-                              snackBar = const SnackBar(content: Text('Produit ajouté aux favoris'));
+                              snackBar = const SnackBar(
+                                  content: Text('Produit ajouté aux favoris'));
+                            } else {
+                              snackBar = const SnackBar(
+                                  content: Text(
+                                      'Vous avez déjà ajouté ce produit dans vos favoris'));
                             }
-                            else
-                            {
-                              snackBar = const SnackBar(content: Text('Vous avez déjà ajouté ce produit dans vos favoris'));
-                            };
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            ;
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
                           },
                         )
                       ],
@@ -179,27 +201,27 @@ class EmptyFavorites extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(top: 200.0, right: 80.0, left: 80.0),
-            child: const Text(
-              "Vous n'avez pas encore de produit en favoris \n \n"
-                  "Rendez-vous dans nos articles puis mettez un like pour ajouter des produits dans vos favoris",
-              style: TextStyle(fontSize: 15),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(10.0),
-            child: const DecoratedIcon(Icons.favorite,
-                color: Colors.red,
-                size: 40.0,
-                shadows: [
-                  BoxShadow(
-                      blurRadius: 3.0,
-                      color: Colors.black26,
-                      offset: Offset(0, 3.0))
-                ]),
-          )
-        ]));
+      Container(
+        margin: const EdgeInsets.only(top: 200.0, right: 80.0, left: 80.0),
+        child: const Text(
+          "Vous n'avez pas encore de produit en favoris \n \n"
+          "Rendez-vous dans nos articles puis mettez un like pour ajouter des produits dans vos favoris",
+          style: TextStyle(fontSize: 15),
+          textAlign: TextAlign.center,
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.all(10.0),
+        child: const DecoratedIcon(Icons.favorite,
+            color: Colors.red,
+            size: 40.0,
+            shadows: [
+              BoxShadow(
+                  blurRadius: 3.0,
+                  color: Colors.black26,
+                  offset: Offset(0, 3.0))
+            ]),
+      )
+    ]));
   }
 }
