@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/config/data.dart';
 import 'package:flutter_ecommerce/repositories/cart_impl_repository.dart';
+import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
+import 'package:flutter_ecommerce/services/shopping_cart/cart_read_write_file.dart';
 
 class ListShoppingCart extends StatefulWidget {
   const ListShoppingCart({Key? key}) : super(key: key);
@@ -10,10 +14,30 @@ class ListShoppingCart extends StatefulWidget {
 }
 
 class _ListShoppingCart extends State<ListShoppingCart> {
+  String _cartRetrieved = "";
   final CartImplRepository _cartImplRepository = CartImplRepository();
+  final ProductImplRepository _productImplRepository = ProductImplRepository();
+  final ShoppingCartStorage _shoppingCartStorage = ShoppingCartStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    _shoppingCartStorage.readObj().then((String value) {
+      setState(() {
+        _cartRetrieved = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<String> references = [];
+    if(_cartRetrieved.isNotEmpty) {
+      for (int i = 0; i < jsonDecode(_cartRetrieved).length; i++) {
+        references.add(jsonDecode(_cartRetrieved)[i]["reference"]);
+      }
+      //print(_productImplRepository.getProductsWithReferences(references)[0].title);
+    }
     _cartImplRepository.getShoppingCart();
     return Scaffold(
         appBar: AppBar(

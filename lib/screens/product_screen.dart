@@ -59,7 +59,7 @@ class _ProductScreen extends State<ProductScreen> {
                     _productImplRepository
                             .getProductByIndex(widget.index)
                             .price
-                            .toString() +
+                            .toStringAsFixed(2) +
                         '€',
                     style: const TextStyle(fontSize: 26.0),
                   ),

@@ -102,7 +102,7 @@ class _HomeScreen extends State<HomeScreen> {
                             child: Text(_productImplRepository
                                     .getProductByIndex(index)
                                     .price
-                                    .toString() +
+                                    .toStringAsFixed(2) +
                                 '€'),
                           ),
                           IconButton(

@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:decorated_icon/decorated_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/repositories/models/cart_model.dart';
+import 'package:flutter_ecommerce/services/shopping_cart/cart_read_write_file.dart';
+import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);

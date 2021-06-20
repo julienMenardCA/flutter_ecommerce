@@ -14,4 +14,19 @@ class ProductImplRepository extends ProductRepository {
     return ProductModel(objectId: data[index]["object_id"]! as int, title: data[index]["title"]! as String, imageUrl: data[index]["image_url"]! as String,
         price: data[index]["price"]! as double, description: data[index]["description"]! as String, reference: data[index]["reference"]! as String, stock: data[index]["stock"]! as int);
   }
+
+  @override
+  List<ProductModel> getProductsWithReferences(List<String> references) {
+    List<ProductModel> temp = [];
+    print(references);
+    /*references.forEach((element) {
+
+      temp.add(getProductByIndex(element.indexOf(element)));
+    });*/
+    data.forEach((element) {
+
+    });
+
+    return temp;
+  }
 }
