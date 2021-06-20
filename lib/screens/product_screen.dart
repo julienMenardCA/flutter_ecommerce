@@ -80,8 +80,7 @@ class _ProductScreen extends State<ProductScreen> {
                             color: Colors.black26,
                             offset: Offset(0, 3.0))
                       ],
-                    )
-                ),
+                    )),
               ]),
               Row(children: [
                 Container(

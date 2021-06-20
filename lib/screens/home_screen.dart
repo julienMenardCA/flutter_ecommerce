@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/repositories/cart_impl_repository.dart';
 import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
 import 'package:flutter_ecommerce/screens/product_screen.dart';
-import 'package:flutter_ecommerce/screens/shopping_cart_copy.dart';
-import 'package:flutter_ecommerce/widgets/custom_bottom_navigation_bar.dart';
+import 'package:flutter_ecommerce/screens/shopping_cart.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -55,19 +54,18 @@ class _HomeScreen extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 90.0),
-                        child: const DecoratedIcon(
-                          Icons.favorite,
-                          color: Colors.red,
-                          size: 30.0,
-                          shadows: [
-                            BoxShadow(
-                                blurRadius: 3.0,
-                                color: Colors.black26,
-                                offset: Offset(0, 3.0))
-                          ],
-                        )
-                      ),
+                          margin: const EdgeInsets.only(left: 90.0),
+                          child: const DecoratedIcon(
+                            Icons.favorite,
+                            color: Colors.red,
+                            size: 30.0,
+                            shadows: [
+                              BoxShadow(
+                                  blurRadius: 3.0,
+                                  color: Colors.black26,
+                                  offset: Offset(0, 3.0))
+                            ],
+                          )),
                       Expanded(
                         child: Stack(
                           children: [

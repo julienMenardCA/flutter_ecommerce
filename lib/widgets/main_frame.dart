@@ -4,20 +4,19 @@ import 'package:flutter_ecommerce/screens/home_screen.dart';
 import 'package:flutter_ecommerce/screens/product_screen.dart';
 import 'package:flutter_ecommerce/screens/shopping_cart.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
+class MainFrame extends StatefulWidget {
   final int currentIndex;
 
-  const CustomBottomNavigationBar({
+  const MainFrame({
     Key? key,
     required this.currentIndex,
   }) : super(key: key);
 
   @override
-  _CustomBottomNavigationBarState createState() =>
-      _CustomBottomNavigationBarState();
+  _MainFrame createState() => _MainFrame();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+class _MainFrame extends State<MainFrame> {
   late PageController _controller;
   late int _currentIndex;
 
@@ -35,15 +34,15 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         body: PageView(
             scrollDirection: Axis.horizontal,
             controller: _controller,
+            onPageChanged: (page) {
+              setState(() {
+                _currentIndex = page;
+              });
+            },
             children: const [
               HomeScreen(),
-              FavoriteScreen(
-                index: 1,
-              ),
-              ListShoppingCart2(),
-              ProductScreen(
-                index: 2,
-              ),
+              FavoriteScreen(),
+              ListShoppingCart(),
             ]),
         bottomNavigationBar: BottomNavigationBar(
             selectedItemColor: Colors.lightBlue,
@@ -54,8 +53,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   icon: Icon(Icons.favorite), label: "Favoris"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart), label: "Panier"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.perm_identity), label: "Profil"),
+              // BottomNavigationBarItem(
+              //     icon: Icon(Icons.perm_identity), label: "Profil"),
             ],
             currentIndex: _currentIndex,
             onTap: (index) {

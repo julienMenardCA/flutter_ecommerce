@@ -12,7 +12,7 @@ class ShoppingCartStorage {
 
   Future<File> get _localFile async {
     final path = await _localPath;
-    return File('$path/cart.json');
+    return File('$path/cart.txt');
   }
 
   Future<String> readObj() async {
