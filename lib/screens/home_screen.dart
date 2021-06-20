@@ -4,6 +4,7 @@ import 'package:flutter_ecommerce/repositories/cart_impl_repository.dart';
 import 'package:flutter_ecommerce/repositories/product_impl_repository.dart';
 import 'package:flutter_ecommerce/screens/product_screen.dart';
 import 'package:flutter_ecommerce/screens/shopping_cart.dart';
+import 'package:flutter_ecommerce/services/shopping_cart/cart_read_write_file.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,8 +15,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  final ProductImplRepository _productImplRepository = ProductImplRepository();
+  String _cartRetrieved = "";
   final CartImplRepository _cartImplRepository = CartImplRepository();
+  final ProductImplRepository _productImplRepository = ProductImplRepository();
+  final ShoppingCartStorage _shoppingCartStorage = ShoppingCartStorage(fileName: "shopping_cart.json");
+
+  bool _isInCart = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _shoppingCartStorage.readObj().then((String value) {
+      setState(() {
+        _cartRetrieved = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +59,7 @@ class _HomeScreen extends State<HomeScreen> {
               mainAxisSpacing: 0),
           itemCount: _productImplRepository.getAllProducts().length,
           itemBuilder: (BuildContext ctx, index) {
+            _isInCart = _cartRetrieved.contains(_productImplRepository.getProductByIndex(index).reference);
             return Container(
               margin: const EdgeInsets.all(20.0),
               child: Card(
@@ -106,12 +122,25 @@ class _HomeScreen extends State<HomeScreen> {
                                 '€'),
                           ),
                           IconButton(
-                            icon: const Icon(Icons.shopping_cart),
+                            icon: _isInCart ? const Icon(Icons.shopping_cart) : const Icon(Icons.shopping_cart_outlined),
                             onPressed: () {
-                              _cartImplRepository.addToCart(
-                                  _productImplRepository
-                                      .getProductByIndex(index)
-                                      .reference);
+                              var snackBar = SnackBar(content: Text(''));
+                              if (!_cartRetrieved.contains(_productImplRepository.getProductByIndex(index).reference))
+                              {
+                                _cartImplRepository.addToCart(
+                                    _productImplRepository
+                                        .getProductByIndex(index)
+                                        .reference);
+                                snackBar = const SnackBar(content: Text('Produit ajouté au panier'));
+                              }
+                              else
+                              {
+                                snackBar = const SnackBar(content: Text('Vous avez déjà ajouté ce produit dans votre panier'));
+                              }
+                              setState(() {
+                                _isInCart = _cartRetrieved.contains(_productImplRepository.getProductByIndex(index).reference);
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
                             },
                           )
                         ],

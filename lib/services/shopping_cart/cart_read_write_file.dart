@@ -4,6 +4,10 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class ShoppingCartStorage {
+  final String fileName;
+
+  ShoppingCartStorage({required this.fileName});
+
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
 
@@ -12,7 +16,7 @@ class ShoppingCartStorage {
 
   Future<File> get _localFile async {
     final path = await _localPath;
-    return File('$path/cart.txt');
+    return File('$path/$fileName');
   }
 
   Future<String> readObj() async {

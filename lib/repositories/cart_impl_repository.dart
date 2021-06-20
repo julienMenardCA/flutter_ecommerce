@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter_ecommerce/repositories/abstracts/cart_repository.dart';
-import 'package:flutter_ecommerce/repositories/models/cart_model.dart';
 import 'package:flutter_ecommerce/services/shopping_cart/cart_read_write_file.dart';
 
 class CartImplRepository extends CartRepository {
   String _shoppingCart = '';
-  final ShoppingCartStorage _shoppingCartStorage = ShoppingCartStorage();
+  final ShoppingCartStorage _shoppingCartStorage = ShoppingCartStorage(fileName: "shopping_cart.json");
 
   CartImplRepository()
   {
