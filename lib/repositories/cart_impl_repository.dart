@@ -15,7 +15,13 @@ class CartImplRepository extends CartRepository {
   _updateLocalShoppingCart()
   {
     _shoppingCartStorage.readObj().then((value) {
-      _shoppingCart = value;
+      if (value == 'null') {
+        emptyShoppingCart();
+      }
+      else
+      {
+        _shoppingCart = value;
+      }
     });
   }
 

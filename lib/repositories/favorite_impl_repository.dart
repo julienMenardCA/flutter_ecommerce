@@ -16,7 +16,13 @@ class FavoriteImplRepository extends FavoriteRepository {
   _updateLocalFavorites()
   {
     _favoriteStorage.readObj().then((value) {
-      _favorites = value;
+      if (value == 'null') {
+        emptyFavorites();
+      }
+      else
+      {
+        _favorites = value;
+      }
     });
   }
 
